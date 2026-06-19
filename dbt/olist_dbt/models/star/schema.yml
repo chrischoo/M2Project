@@ -1,0 +1,37 @@
+version: 2
+
+models:
+   # =========================================================================
+  # DIMENSION TABLES 
+  # =========================================================================
+  - name: dim_customers
+    description: "Dimension table housing unique consumer attributes."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_orders
+    description: "Core dimension documenting specific lifecycle states."
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: "Product profile dimensional record detailing internal catalog categories."
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_sellers
+    description: "Merchant seller accounts listing operational business location metrics."
+    columns:
+      - name: seller_id
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,16 @@
+olist_dbt: # Must match the 'profile:' name specified in your dbt_project.yml
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      
+      # Dynamically loaded from your terminal environment or .env file
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      dataset: "{{ env_var('TARGET_BIGQUERY_DATASET_ID') }}"
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      
+      # Structural optimization configurations
+      threads: 4                 # Number of tables dbt can build simultaneously 
+      timeout_seconds: 300       # Hard cutoff window before dropping stuck connections
+      location: US               # Must align with your BigQuery dataset location region

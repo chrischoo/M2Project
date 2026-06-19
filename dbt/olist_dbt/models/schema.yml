@@ -1,0 +1,44 @@
+version: 2
+
+models:
+ 
+  # =========================================================================
+  # FACT TABLES 
+  # =========================================================================
+  - name: fct_order_items
+    description: "Fact table containing individual line item sales metrics."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: order_item_sequence
+        tests:
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
+      - name: order_status
+        tests:
+          # Upgraded Syntax: Nested parameters under 'arguments'
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              arguments:
+                value_set: ['delivered']
+
+  - name: fct_order_payments
+    description: "Fact table recording the payment method distributions."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: payment_split_sequence
+        tests:
+          - not_null
+      - name: order_status
+        tests:
+          # Upgraded Syntax: Nested parameters under 'arguments'
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              arguments:
+                value_set: ['delivered']

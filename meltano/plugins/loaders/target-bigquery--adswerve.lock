@@ -36,13 +36,7 @@
       "description": "Dataset Location. See https://cloud.google.com/bigquery/docs/locations.",
       "placeholder": "us-central1"
     },
-    {
-      "name": "credentials_path",
-      "env": "GOOGLE_APPLICATION_CREDENTIALS",
-      "value": "$MELTANO_PROJECT_ROOT/client_secrets.json",
-      "label": "Credentials Path",
-      "description": "Fully qualified path to `client_secrets.json` for your service account.\n\nSee the [\"Activate the Google BigQuery API\" section of the repository's README](https://github.com/adswerve/target-bigquery#step-1-activate-the-google-bigquery-api) and <https://cloud.google.com/docs/authentication/production>.\n\nBy default, this file is expected to be at the root of your project directory.\n"
-    },
+    
     {
       "name": "validate_records",
       "kind": "boolean",

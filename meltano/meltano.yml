@@ -58,7 +58,15 @@ plugins:
       # Resolved from repo-root .env (symlinked into meltano/.env).
       project_id: ${GCP_PROJECT_ID}
       credentials_path: ${GOOGLE_APPLICATION_CREDENTIALS}
-      dataset_id: raw_olist
+      dataset_id: ${TARGET_BIGQUERY_DATASET_ID}
       location: US
       # Mirror runpipeline.py's WRITE_TRUNCATE semantics on each run.
       replication_method: truncate
+      # --- Advanced Ingestion & Flattening Settings ---
+      method: batch_job
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+python: python3.11
+
+
