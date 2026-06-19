@@ -1,0 +1,17 @@
+Execute meltano
+meltano --env-file=~/m2/M2Project/.env run tap-csv target-bigquery
+
+Execute dbt
+export $(grep -v '^#' ~/m2/M2Project/.env | xargs) && dbt debug --profiles-dir .
+export $(grep -v '^#' ~/m2/M2Project/.env | xargs) && dbt snapshot --profiles-dir .
+export $(grep -v '^#' ~/m2/M2Project/.env | xargs) && dbt run --profiles-dir .
+export $(grep -v '^#' ~/m2/M2Project/.env | xargs) && dbt test --profiles-dir .
+
+export $(grep -v '^#' ~/m2/M2Project/.env | xargs) && dbt build --profiles-dir .
+
+
+pip install duckdb python-dotenv google-cloud-bigquery
+pip install polars plotly google-cloud-bigquery python-dotenv
+pip install streamlit polars plotly google-cloud-bigquery python-dotenv
+
+pip install --upgrade streamlit plotly
