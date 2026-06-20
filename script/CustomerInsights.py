@@ -33,7 +33,7 @@ def get_data():
 
 # 1. EXTRACTION START TIMING
 total_start = time.perf_counter()
-df = get_data()
+df = get_data()  
 
 # 2. DYNAMIC RETENTION AGGREGATION VIA POLARS
 proc_start = time.perf_counter()
